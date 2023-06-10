@@ -1,0 +1,27 @@
+<div class="col-12 d-flex flex-column align-items-center p-5">
+
+    <h1>Faça login</h1>
+    <h2>Para acessar o acervo</h2>
+
+    <form class="col-8 my-3" [formGroup]="loginForm" action="">
+
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Email" aria-label="email" aria-describedby="email" formControlName="email">
+        </div>
+
+        <div class="input-group mb-3">
+            <input type="password" class="form-control" placeholder="Senha" aria-label="senha" aria-describedby="senha" formControlName="password">
+        </div>
+
+        <div class="col-12">
+            <div class="row g-2">
+                <button class="col-12 btn btn-outline-secondary" type="button" (click)="onSubmit()">Entrar</button>
+        
+                <button class="col-12 btn btn-outline-secondary" type="button" routerLink="/register">Me cadastrar</button>
+            </div>
+        </div>
+
+
+    </form>
+
+</div>

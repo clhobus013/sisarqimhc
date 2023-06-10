@@ -1,0 +1,44 @@
+<div class="col-12 d-flex flex-column align-items-center p-5">
+
+    <h1>Cadastre-se</h1>
+    <h2>Para acessar o acervo</h2>
+
+    <form class="col-8 my-3" action="">
+
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Primeiro nome" aria-label="Primeiro nome" aria-describedby="primeiro-nome" formControlName="firstName">
+        </div>
+
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Sobrenome" aria-label="Sobrenome" aria-describedby="sobrenome" formControlName="lastName">
+        </div>
+
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Login" aria-label="Login" aria-describedby="Login" formControlName="username">
+        </div>
+
+        <div class="input-group mb-3">
+            <input type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="Email" formControlName="email">
+        </div>
+
+        <div class="input-group mb-3">
+            <input type="tel" class="form-control" placeholder="Telefone" aria-label="Telefone" aria-describedby="Telefone" formControlName="phoneNumber">
+        </div>
+
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="CPF" aria-label="CPF" aria-describedby="CPF" formControlName="cpf">
+        </div>
+
+        <div class="input-group mb-3">
+            <input type="password" class="form-control" placeholder="Senha" aria-label="Senha" aria-describedby="Senha" formControlName="passwords">
+        </div>
+
+        <div class="input-group mb-3">
+            <input type="password" class="form-control" placeholder="Confirmação de senha" aria-label="Confirmação de senha" aria-describedby="Confirmação de senha" formControlName="confPassword">
+        </div>
+
+        <button class="col-12 btn btn-outline-secondary" type="button" (click)="onSubmit()">Me cadastrar</button>
+
+    </form>
+
+</div>
