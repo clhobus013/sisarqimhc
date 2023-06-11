@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../services/authentication.service';
 import { StructureClient } from '../clients/structure.client';
 import { Observable } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-secret',
@@ -10,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class SecretComponent implements OnInit {
 
-  public structures: Observable<any> = this.StructureClient.getStructures();
+  public structures: any[] = [];
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -18,6 +19,16 @@ export class SecretComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+    this.StructureClient.getStructures().subscribe({
+      next: (res) => {
+        console.log("Obteu estrutura", res)
+        this.structures = res;
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log("Erro ao obter estrutura", error);
+      }
+    });
   }
 
   logout(): void {

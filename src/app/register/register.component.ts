@@ -9,14 +9,14 @@ import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms
 })
 export class RegisterComponent implements OnInit {
 
-  public register!: UntypedFormGroup;
+  public registerForm!: UntypedFormGroup;
 
   constructor(
     private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit(): void {
-    this.register = new UntypedFormGroup({
+    this.registerForm = new UntypedFormGroup({
       firstName: new UntypedFormControl('', Validators.required),
       lastName: new UntypedFormControl('', Validators.required),
       username: new UntypedFormControl('', Validators.required),
@@ -30,14 +30,14 @@ export class RegisterComponent implements OnInit {
 
   public onSubmit() {
     this.authenticationService.register(
-      this.register.get('firstName')!.value,
-      this.register.get('lastName')!.value,
-      this.register.get('username')!.value,
-      this.register.get('email')!.value,
-      this.register.get('phoneNumber')!.value,
-      this.register.get('cpf')!.value,
-      this.register.get('password')!.value,
-      this.register.get('confPassword')!.value,
+      this.registerForm.get('firstName')!.value,
+      this.registerForm.get('lastName')!.value,
+      this.registerForm.get('username')!.value,
+      this.registerForm.get('email')!.value,
+      this.registerForm.get('phoneNumber')!.value,
+      this.registerForm.get('cpf')!.value,
+      this.registerForm.get('password')!.value,
+      this.registerForm.get('confPassword')!.value,
     )
   }
 
