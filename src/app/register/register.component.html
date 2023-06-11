@@ -3,7 +3,7 @@
     <h1>Cadastre-se</h1>
     <h2>Para acessar o acervo</h2>
 
-    <form class="col-8 my-3" action="">
+    <form class="col-8 my-3" [formGroup]="registerForm" action="">
 
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Primeiro nome" aria-label="Primeiro nome" aria-describedby="primeiro-nome" formControlName="firstName">
@@ -30,7 +30,7 @@
         </div>
 
         <div class="input-group mb-3">
-            <input type="password" class="form-control" placeholder="Senha" aria-label="Senha" aria-describedby="Senha" formControlName="passwords">
+            <input type="password" class="form-control" placeholder="Senha" aria-label="Senha" aria-describedby="Senha" formControlName="password">
         </div>
 
         <div class="input-group mb-3">

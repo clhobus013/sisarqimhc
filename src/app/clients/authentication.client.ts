@@ -30,7 +30,7 @@ export class AuthenticationClient {
         cpf: string,
         password: string,
         passwordConf: string
-    ): Observable<string> {
+    ): Observable<any> {
         return this.http.post(
             environment.apiUrl + '/account/register/', {
                 first_name: firstName,

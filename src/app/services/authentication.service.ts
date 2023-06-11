@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationClient } from '../clients/authentication.client';
 import { HttpErrorResponse } from "@angular/common/http";
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -12,19 +13,24 @@ export class AuthenticationService {
 
   constructor(
     private authenticationClient: AuthenticationClient,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   public login(email: string, password: string) {
     this.authenticationClient.login(email, password).subscribe({
       next: (res) => {
         res = JSON.parse(res);
-        console.log("resposta", res.token.access);
-        localStorage.setItem(this.tokenKey, res.token.access);
-        this.router.navigate(['/']);
+
+        if (!!res) {
+          localStorage.setItem(this.tokenKey, res.token.access);
+          this.toastr.success(res.response);
+          this.router.navigate(['/']);
+        }
       },
       error: (error: HttpErrorResponse) => {
-        console.log("Erro", error)
+        let strError = JSON.parse(error.error).error;
+        this.toastr.error(strError, "Não foi possível efetuar o login");
       }
     })
   }
@@ -39,9 +45,19 @@ export class AuthenticationService {
     password: string,
     passwordConf: string
   ) {
-    this.authenticationClient.register(firstName, lastName, username, email, phoneNumber, cpf, password, passwordConf).subscribe((token) => {
-      localStorage.setItem(this.tokenKey, token);
-      this.router.navigate(['/']);
+    this.authenticationClient.register(firstName, lastName, username, email, phoneNumber, cpf, password, passwordConf).subscribe({
+      next:(res) => {
+        res = JSON.parse(res);
+        if (!!res) {
+          localStorage.setItem(this.tokenKey, res.token.access);
+          this.toastr.success(res.response);
+          this.router.navigate(['/']);
+        }
+      },
+      error: (error: HttpErrorResponse) => {
+        let strError = JSON.parse(error.error).error;
+        this.toastr.error(strError, "Não foi possível efetuar o cadastro");
+      }
     })
   }
 
