@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../services/authentication.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -9,22 +9,22 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-  public register!: FormGroup;
+  public register!: UntypedFormGroup;
 
   constructor(
     private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit(): void {
-    this.register = new FormGroup({
-      firstName: new FormControl('', Validators.required),
-      lastName: new FormControl('', Validators.required),
-      username: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
-      phoneNumber: new FormControl('', Validators.required),
-      cpf: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required),
-      confPassword: new FormControl('', Validators.required),
+    this.register = new UntypedFormGroup({
+      firstName: new UntypedFormControl('', Validators.required),
+      lastName: new UntypedFormControl('', Validators.required),
+      username: new UntypedFormControl('', Validators.required),
+      email: new UntypedFormControl('', Validators.required),
+      phoneNumber: new UntypedFormControl('', Validators.required),
+      cpf: new UntypedFormControl('', Validators.required),
+      password: new UntypedFormControl('', Validators.required),
+      confPassword: new UntypedFormControl('', Validators.required),
     })
   }
 
