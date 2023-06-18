@@ -1,0 +1,28 @@
+
+<div class="col-12 px-3 py-2">
+    
+    <div class="col-12 d-flex justify-content-between">
+        <h2>{{structure.title}}</h2>
+        <button type="button" class="btn btn-primary">+ Documento</button>
+    </div>
+    <p>{{structure.description}}</p>
+
+    <div class="row row-cols-1 row-cols-md-2 g-3">
+
+        <div *ngFor="let document of documents"
+            class="card">
+            <div class="card-body">
+                <div class="col-12 d-flex justify-content-between">
+                    <h5>{{ document.title }}</h5>
+                    <button type="button" class="btn btn-light">
+                        <fa-icon [icon]="faPencil"></fa-icon>
+                    </button>
+                </div>
+                <p class="text-truncate">{{document.description}}</p>
+                <span class="text-truncate fw-light">{{document.addInfo}}</span>
+                <span>Produtor: ADD PRODUTOR</span>
+            </div>
+        </div>
+
+    </div>
+</div>
