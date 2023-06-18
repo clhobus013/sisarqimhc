@@ -1,0 +1,27 @@
+
+<div class="col-12 px-3 py-2">
+    
+    <div class="col-12 d-flex justify-content-between">
+        <h2>{{collection?.title}}</h2>
+        <button type="button" class="btn btn-primary">+ Estrutura</button>
+    </div>
+    <p>{{collection?.description}}</p>
+
+    <div class="row row-cols-1 row-cols-md-2 g-3">
+
+        <div *ngFor="let structure of structures"
+            class="card">
+            <div class="btn card-body" routerLink="/estrutura">
+                <div class="col-12 d-flex justify-content-between">
+                    <h5>{{ structure.title }}</h5>
+                    <button type="button" class="btn btn-light">
+                        <fa-icon [icon]="faPencil"></fa-icon>
+                    </button>
+                </div>
+                <p class="text-truncate">{{structure.description}}</p>
+                <span class="text-truncate fw-light">{{structure.addInfo}}</span>
+            </div>
+        </div>
+
+    </div>
+</div>
