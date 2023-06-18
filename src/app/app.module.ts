@@ -12,7 +12,6 @@ import { ToastrModule } from 'ngx-toastr';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { SecretComponent } from './secret/secret.component';
 import { AcervoComponent } from './acervo/acervo.component';
 import { StructureComponent } from './structure/structure.component';
 import { AcervosComponent } from './acervos/acervos.component';
@@ -22,7 +21,6 @@ import { AcervosComponent } from './acervos/acervos.component';
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    SecretComponent,
     AcervoComponent,
     StructureComponent,
     AcervosComponent
