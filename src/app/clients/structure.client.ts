@@ -12,8 +12,8 @@ export class StructureClient {
     constructor(private http: HttpClient) {
     }
 
-    public getStructures(collection: Collection): Observable<any> {
-        let params = new HttpParams().set("acervo_id", collection.id);
+    public getStructures(collectionId: number): Observable<any> {
+        let params = new HttpParams().set("acervo_id", collectionId);
         return this.http.get(
             environment.apiUrl + '/estrutura/', {params: params}
         )

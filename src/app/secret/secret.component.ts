@@ -26,7 +26,7 @@ export class SecretComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.structureClient.getStructures(new Collection(1, '1', 'Teste', 'ABC', 'Teste', 'Teste', 1)).subscribe({
+    this.structureClient.getStructures(1).subscribe({
       next: (res) => {
         console.log("Resposta structure", res)
 
