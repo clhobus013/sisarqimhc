@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
+import { AuthenticationService } from './services/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,9 @@ export class AppComponent {
   faBookmark = faBookmark;
   isCollapsed = false;
 
+  constructor(private authenticationService: AuthenticationService){}
+  
+
   public toggleNavbar(button: HTMLElement, navbar: HTMLElement) {
     if (this.isCollapsed) {
       button.classList.add('collapsed');
@@ -22,5 +26,9 @@ export class AppComponent {
     }
 
     this.isCollapsed = !this.isCollapsed
+  }
+
+  public logout(): void {
+    this.authenticationService.logout();
   }
 }
