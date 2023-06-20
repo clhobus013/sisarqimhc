@@ -1,4 +1,5 @@
 export class User {
+    public id: number;
     public firstName: string;
     public lastName: string;
     public email: string;
@@ -9,7 +10,8 @@ export class User {
     public admin: boolean;
     public team: boolean;
 
-    constructor(firstName: string, lastName: string, email: string, username: string, password: string, phoneNumber: string, cpf: string, admin: boolean = false, team: boolean = false) {
+    constructor(id: number,firstName: string, lastName: string, email: string, username: string, password: string, phoneNumber: string, cpf: string, admin: boolean = false, team: boolean = false) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
