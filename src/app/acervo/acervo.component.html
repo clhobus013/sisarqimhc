@@ -2,24 +2,26 @@
 <div class="col-12 px-3 py-2">
     
     <div class="col-12 d-flex justify-content-between">
-        <h2>{{collection?.title}}</h2>
-        <button type="button" class="btn btn-primary">+ Estrutura</button>
+        <h2 class="text-truncate">{{collection?.title}}</h2>
+        <button type="button" class="col-3 col-md-2 btn btn-primary" [routerLink]="['/cadastro-estrutura', collection?.id, null]">+ Estrutura</button>
     </div>
     <p>{{collection?.description}}</p>
 
-    <div class="row row-cols-1 row-cols-md-2 g-3">
+    <div class="row g-3">
 
         <div *ngFor="let structure of structures"
-            class="card">
-            <div class="btn card-body" routerLink="/estrutura">
-                <div class="col-12 d-flex justify-content-between">
-                    <h5>{{ structure.title }}</h5>
-                    <button type="button" class="btn btn-light">
-                        <fa-icon [icon]="faPencil"></fa-icon>
-                    </button>
+            class="col-sm-6">
+            <div class="card">
+                <div class="btn card-body" [routerLink]="['/estrutura', structure.id]">
+                    <div class="col-12 d-flex justify-content-between">
+                        <h5 class="text-truncate">{{ structure.title }}</h5>
+                        <button type="button" class="btn btn-light">
+                            <fa-icon [icon]="faPencil"></fa-icon>
+                        </button>
+                    </div>
+                    <p class="multine-ellipsis">{{structure.description}}</p>
+                    <span class="multine-ellipsis fw-light">{{structure.addInfo}}</span>
                 </div>
-                <p class="text-truncate">{{structure.description}}</p>
-                <span class="text-truncate fw-light">{{structure.addInfo}}</span>
             </div>
         </div>
 
