@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { AcervosComponent } from './acervos/acervos.component';
 import { AcervoComponent } from './acervo/acervo.component';
 import { StructureComponent } from './structure/structure.component';
+import { NewStructureComponent } from './new-structure/new-structure.component';
 
 const routes: Routes = [
   {
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'acervos', component: AcervosComponent },
   { path: 'acervo/:id', component: AcervoComponent },
-  { path: 'estrutura', component: StructureComponent },
+  { path: 'estrutura/:id', component: StructureComponent },
+  { path: 'cadastro-estrutura/:id/:supStructureId', component: NewStructureComponent },
 ];
 
 @NgModule({

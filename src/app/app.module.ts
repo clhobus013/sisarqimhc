@@ -15,6 +15,7 @@ import { RegisterComponent } from './register/register.component';
 import { AcervoComponent } from './acervo/acervo.component';
 import { StructureComponent } from './structure/structure.component';
 import { AcervosComponent } from './acervos/acervos.component';
+import { NewStructureComponent } from './new-structure/new-structure.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AcervosComponent } from './acervos/acervos.component';
     RegisterComponent,
     AcervoComponent,
     StructureComponent,
-    AcervosComponent
+    AcervosComponent,
+    NewStructureComponent
   ],
   imports: [
     BrowserModule,

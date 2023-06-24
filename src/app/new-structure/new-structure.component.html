@@ -1,0 +1,32 @@
+<div class="col-12 d-flex flex-column align-items-center p-5">
+
+    <h1>Cadastro nova estrutura</h1>
+    <h2>BreadCrumb</h2>
+
+    <form class="col-8 my-3" [formGroup]="registerForm" action="">
+
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Código" aria-label="Código" aria-describedby="codigo" formControlName="code">
+        </div>
+
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Título" aria-label="Título" aria-describedby="título" formControlName="title">
+        </div>
+
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Sigla" aria-label="Sigla" aria-describedby="sigla" formControlName="acronym">
+        </div>
+
+        <div class="input-group mb-3">
+            <input type="email" class="form-control" placeholder="Descrição" aria-label="Descrição" aria-describedby="Descrição" formControlName="description">
+        </div>
+
+        <div class="input-group mb-3">
+            <input type="tel" class="form-control" placeholder="Informações adicionais" aria-label="Informações adicionais" aria-describedby="Informações adicionais" formControlName="addInfo">
+        </div>
+
+        <button class="col-12 btn btn-outline-secondary" type="button" (click)="onSubmit()">Salvar</button>
+
+    </form>
+
+</div>
