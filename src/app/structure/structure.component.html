@@ -12,18 +12,36 @@
 
     <div class="row row-cols-1 row-cols-md-2 g-3">
 
-        <div *ngFor="let document of documents"
-            class="card">
-            <div class="card-body">
-                <div class="col-12 d-flex justify-content-between">
-                    <h5>{{ document.title }}</h5>
-                    <button type="button" class="btn btn-light">
-                        <fa-icon [icon]="faPencil"></fa-icon>
-                    </button>
+        <div *ngFor="let structure of structures"
+            class="col-sm-6">
+            <div class="card">
+                <div class="btn card-body" [routerLink]="['/estrutura', structure.id]">
+                    <div class="col-12 d-flex justify-content-between">
+                        <h5 class="text-truncate">{{ structure.title }}</h5>
+                        <button type="button" class="btn btn-light">
+                            <fa-icon [icon]="faPencil"></fa-icon>
+                        </button>
+                    </div>
+                    <p class="multine-ellipsis">{{structure.description}}</p>
+                    <span class="multine-ellipsis fw-light">{{structure.addInfo}}</span>
                 </div>
-                <p class="text-truncate">{{document.description}}</p>
-                <span class="text-truncate fw-light">{{document.addInfo}}</span>
-                <span>Produtor: ADD PRODUTOR</span>
+            </div>
+        </div>
+
+        <div *ngFor="let document of documents"
+            class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="col-12 d-flex justify-content-between">
+                        <h5>{{ document.title }}</h5>
+                        <button type="button" class="btn btn-light">
+                            <fa-icon [icon]="faPencil"></fa-icon>
+                        </button>
+                    </div>
+                    <p class="text-truncate">{{document.description}}</p>
+                    <span class="text-truncate fw-light">{{document.addInfo}}</span>
+                    <span>Produtor: ADD PRODUTOR</span>
+                </div>
             </div>
         </div>
 

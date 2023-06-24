@@ -17,6 +17,7 @@ import { StructureClient } from '../clients/structure.client';
 export class StructureComponent implements OnInit {
 
   documents: Document[] = [];
+  structures: Structure[] = [];
   structure!: Structure;
   collection!: Collection;
 
@@ -37,16 +38,18 @@ export class StructureComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.structureId = parseInt(params['id']);
       this.getStructure(this.structureId);
+
+      this.getSubStructures(this.structureId)
     })
 
-    this.documents.push(new Document(0, "ABC", "Titulo documento 01", "ABC", "Descricao do documento 01", new Date, new Date, "Informações adicionais", "Genero 01", 0, true))
+    // this.documents.push(new Document(0, "ABC", "Titulo documento 01", "ABC", "Descricao do documento 01", new Date, new Date, "Informações adicionais", "Genero 01", 0, true))
 
-    this.documents.push(new Document(0, "ABC", "Titulo documento 01", "ABC", "Descricao do documento 01", new Date, new Date, "Informações adicionais", "Genero 01", 0, true))
+    // this.documents.push(new Document(0, "ABC", "Titulo documento 01", "ABC", "Descricao do documento 01", new Date, new Date, "Informações adicionais", "Genero 01", 0, true))
 
 
   }
 
-  public getStructure (id: number) {
+  public getStructure(id: number) {
     this.StructureClient.getStructureDetail(id).subscribe({
       next: (res) => {
 
@@ -54,7 +57,9 @@ export class StructureComponent implements OnInit {
           
           this.structure = new Structure(res.id, res.codigo,res.titulo, res.sigla, res.descricao, res.info_adicionais, res.nivel_estrutura, res.acervo)
           
-          this.getCollection(res.acervo);
+          this.getCollection(res.acervo, this.structure);
+
+          console.log("Estrutura pai", this.structure)
         }
       },
       error: (error: HttpErrorResponse) => {
@@ -65,13 +70,39 @@ export class StructureComponent implements OnInit {
     })
   }
 
-  public getCollection (collectionId: number) {
+  public getSubStructures(id: number) {
+    this.StructureClient.getSubStructures(id).subscribe({
+      next: (res) => {
+
+        if (!!res) {
+
+          res.map((stru: any)=> {
+            console.log("Estruturas filhas ", stru)
+            
+            let structure = new Structure(stru.id, stru.codigo,stru.titulo, stru.sigla, stru.descricao, stru.info_adicionais, stru.nivel_estrutura, stru.acervo)
+            
+            this.getCollection(stru.acervo, structure);
+
+            this.structures.push(structure)
+          })
+
+        }
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log(error);
+        let strError = error.error.detail;
+        this.toastr.error(strError, "Não foi possível obter a estrutura");
+      }
+    })
+  }
+
+  public getCollection (collectionId: number, structure: Structure) {
     this.CollectionClient.getCollection(collectionId).subscribe({
       next: (res) => {
         if (!!res) {
           this.collection = new Collection(res.id, res.codigo, res.titulo, res.sigla, res.descricao, res.info_adicionais, res.ordem_exibicao)
 
-          this.structure.setCollection(this.collection)
+          structure.setCollection(this.collection)
         }
       },
       error: (error: HttpErrorResponse) => {

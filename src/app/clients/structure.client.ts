@@ -19,6 +19,13 @@ export class StructureClient {
         )
     }
 
+    public getSubStructures(supStructureId: number): Observable<any> {
+        let params = new HttpParams().set("estrutura_superior_id", supStructureId);
+        return this.http.get(
+            environment.apiUrl + '/estrutura/', {params: params}
+        )
+    }
+
     public getStructureDetail(id: number): Observable<any> {
         return this.http.get(
             environment.apiUrl + '/estrutura/' + id + '/'
