@@ -18,4 +18,33 @@ export class StructureClient {
             environment.apiUrl + '/estrutura/', {params: params}
         )
     }
+
+    public getStructureDetail(id: number): Observable<any> {
+        return this.http.get(
+            environment.apiUrl + '/estrutura/' + id + '/'
+        )
+    }
+
+    public register(
+        code: string,
+        title: string,
+        acronym: string,
+        description: string,
+        addInfo: string,
+        collectionId: number,
+        supStructureId: number | null
+    ): Observable<any> {
+        return this.http.post(
+            environment.apiUrl + '/estrutura/', {
+                codigo: code,
+                titulo: title,
+                sigla: acronym,
+                descricao: description,
+                info_adicionais: addInfo,
+                acervo: collectionId,
+                estrutura_nivel_superior: supStructureId
+            }, 
+            { responseType: 'json'}
+        )
+    }
 }

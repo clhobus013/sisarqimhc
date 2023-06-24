@@ -22,4 +22,8 @@ export class Structure {
         this.collection = collection;
     }
 
+    public setCollection(collection: Collection) {
+        this.collection = collection
+    }
+
 }

@@ -3,7 +3,10 @@
     
     <div class="col-12 d-flex justify-content-between">
         <h2>{{structure.title}}</h2>
-        <button type="button" class="btn btn-primary">+ Documento</button>
+        <div>
+            <button type="button" class="btn btn-primary mx-2">+ Item</button>
+            <button type="button" class="btn btn-primary" [routerLink]="['/cadastro-estrutura', structure.collection.id, null]">+ Estrutura</button>
+        </div>
     </div>
     <p>{{structure.description}}</p>
 
