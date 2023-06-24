@@ -45,4 +45,10 @@ export class AuthenticationClient {
             { responseType: 'text'}
         )
     }
+
+    public getUser(): Observable<any> {
+        return this.http.get(
+            environment.apiUrl + '/account/session/'
+        )
+    }
 }
