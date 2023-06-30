@@ -50,6 +50,8 @@ export class StructureComponent implements OnInit {
   }
 
   public getStructure(id: number) {
+
+    this.structures = [];
     this.StructureClient.getStructureDetail(id).subscribe({
       next: (res) => {
 
